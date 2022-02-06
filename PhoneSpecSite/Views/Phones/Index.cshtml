@@ -1,0 +1,67 @@
+﻿@using PhoneSpecSite.Data
+@model IEnumerable<Phones>
+
+@{
+    ViewData["Title"] = "List of Phones";
+}
+
+<div class="row">
+    @foreach(var item in Model)
+    {
+      <div class="col-md-4 col-xs-6 border-primary mb-3">
+          <div class="card mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                  <div class="col-md-12">
+                      <div class="card-header text-white bg-info">
+                          <p class="card-text">
+                              <h5 class="card-title">
+                                  @item.PhoneName
+                                    @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                         <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.PhoneId" ><i class="bi bi-pencil-square"></i></a>
+                                    }
+                                   
+                              </h5>
+                          </p>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <img src="@item.PhonePictureURL" width="100%" alt="@item.PhoneName">
+                  </div>
+                  <div class="col-md-6">
+                      <div class="card-body">
+                          <p class="card-text">@item.PhoneDescription</p>
+                           <p class="card-text"><b>Company:</b>@item.PhoneCompany.CompanyName</p>
+                           <p class="card-text"><b>Category:</b>@item.PhoneCategory</p>
+                           <p class="card-text"><b>PhoneOS:</b>@item.PhoneOS</p>
+                           <p class="card-text"><b>Release Date:</b>@item.ReleaseDate</p>
+                           <p class="card-text"><b>Price:</b>@item.Price</p>
+
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="card-footer">
+                          <p class="card-text">
+                              <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
+                                  <i class="bi bi-eye-fill"></i> Show Details</a>
+                                @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                     <a class="btn btn-danger text-white"  asp-action="Delete" asp-route-id="@item.Id"> <i class= "bi bi-trash"></i> Delete</a>
+                                }
+                               
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+     
+    }
+    @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+         <div class="text-white">
+          <a asp-controller="Phones" asp-action="Create" class="btn btn-success"> <i class="bi bi-plus-circle"></i> Add New Phone</a>
+      </div>
+    }
+   

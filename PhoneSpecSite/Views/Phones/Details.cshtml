@@ -1,0 +1,58 @@
+﻿@using PhoneSpecSite.Data
+@model Phones
+
+@{
+    ViewData["Title"] = "Phone Details";
+}
+
+<div class="row">
+      <div class="col-md-8  offset-2">
+          <div class="card mb-12"">
+              <div class="row g-0">
+                  <div class="col-md-12">
+                      <div class="card-header text-white bg-info">
+                          <p class="card-text">
+                              <h5 class="card-title">
+                                  @Model.PhoneName
+                              </h5>
+                          </p>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <img src="@Model.PhonePictureURL" width="100%" alt="@Model.PhoneName">
+                  </div>
+                  <div class="col-md-8">
+                      <div class="card-body">
+                          <p class="card-text">@Model.PhoneDescription</p>
+                           <p class="card-text"><b>Company:</b>
+                               <a asp-controller="PhoneCompany" asp-action="Details" asp-route-id="@Model.Id">
+                                   @Model.PhoneCompany.CompanyName
+                                 </a>
+                                 </p>
+                           <p class="card-text"><b>Category:</b>@Model.PhoneCategory</p>
+                           <p class="card-text"><b>PhoneOS:</b>@Model.PhoneOS</p>
+                           <p class="card-text"><b>Chipset:</b>@Model.Chipset</p>
+                           <p class="card-text"><b>Memory:</b>@Model.Memory</p>
+                           <p class="card-text"><b>Camera:</b>@Model.Camera</p>
+                           <p class="card-text"><b>Display:</b>@Model.Display</p>
+                           <p class="card-text"><b>Battery:</b>@Model.Battery</p>
+                           <p class="card-text"><b>CPU:</b>@Model.CPU</p>
+                           <p class="card-text"><b>GPU:</b>@Model.GPU</p>
+                           <p class="card-text"><b>Body:</b>@Model.Body</p>
+                           <p class="card-text"><b>Release Date:</b>@Model.ReleaseDate</p>
+                           <p class="card-text"><b>Price:</b>@Model.Price</p>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <div class="card-footer">
+                          <p class="card-text">
+                              <a class ="btn btn-outline-primary float-right"  href="/Phones/Index"> Back to List</a>
+                               <a class ="btn btn-danger text-white"  href="/Phones/Delete"> <i class= "bi bi-trash"></i>Delete</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    

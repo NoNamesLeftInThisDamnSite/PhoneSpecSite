@@ -1,0 +1,89 @@
+﻿@model Phones
+
+@{
+    ViewData["Title"] = "Delete Phone";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+           <h1>Delete confirmation for @Model.PhoneName</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+              
+                    <div class="form-group text-center">
+                   <img class="border-info rounded-circle" style="max-width:150px" id="LogoPreview" />
+               </div>
+               <div class="form-group">
+                   <label asp-for="PhoneDescription" class="control-label"></label>
+                   <input asp-for="PhoneDescription" class="form-control" readonly />
+                   <span asp-validation-for="PhoneDescription" class="text-danger"></span>
+               </div>
+                <div class="form-group">
+                   <label asp-for="PhoneCategory" class="control-label"></label>
+                   <input asp-for="PhoneCategory" class="form-control" readonly/>
+                   <span asp-validation-for="PhoneCategory" class="text-danger"></span>
+               </div>
+                <div class="form-group">
+                   <label asp-for="PhonePictureURL" class="control-label"></label>
+                   <input asp-for="PhonePictureURL" class="form-control" readonly/>
+                   <span asp-validation-for="PhonePictureURL" class="text-danger"></span>
+               </div>
+               <div class="form-group">
+                   <label asp-for="Memory" class="control-label"></label>
+                   <input asp-for="Memory" class="form-control" readonly/>
+                   <span asp-validation-for="Memory" class="text-danger"></span>
+               </div>
+               <div class="form-group">
+                   <label asp-for="Chipset" class="control-label"></label>
+                   <input asp-for="Chipset" class="form-control" readonly/>
+                   <span asp-validation-for="Chipset" class="text-danger"></span>
+               </div>
+               <div class="form-group">
+                   <label asp-for="GPU" class="control-label"></label>
+                   <input asp-for="GPU" class="form-control" readonly/>
+                   <span asp-validation-for="GPU" class="text-danger"></span>
+               </div>
+               <div class="form-group">
+                   <label asp-for="ReleaseDate" class="control-label"></label>
+                   <input asp-for="ReleaseDate" class="form-control" readonly/>
+                   <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+               </div>
+               <div class="form-group">
+                   <label asp-for="Price" class="control-label"></label>
+                   <input asp-for="Price" class="form-control" readonly/>
+                   <span asp-validation-for="Price" class="text-danger"></span>
+               </div>
+                <div class="form-group">
+                   <label asp-for="PhoneOS" class="control-label"></label>
+                   <input asp-for="PhoneOS" class="form-control" readonly />
+                   <span asp-validation-for="PhoneOS" class="text-danger"></span>
+              
+
+               <div class="form-group">
+                   <form asp-action="Delete">
+                       <input type="hidden" asp-for="Id" />
+                       <input type="submit" value="Confirm" class="btn btn-danger float-right"/>
+                   </form>
+                   <a class="btn btn-outline-secondary" asp-action="Index">ShowAll</a>
+               </div>
+               
+            </div>
+                
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function(){
+             var output = document.getElementById('PhonePictureURL');
+            output.src=$("#PhonePictureURL").val();
+        });
+        $("#PhonePictureURL").on("change",function(){
+            var output = document.getElementById('PhonePictureURLPreview');
+            output.src=$(this).val();
+        })
+    </script>
+}
